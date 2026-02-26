@@ -7,6 +7,8 @@ import { news } from './routes/news.js'
 
 const app = new Hono()
 
+const port = Number(process.env.PORT) || 3000
+
 app.use(prettyJSON())
 
 app.get('/', (c) =>
@@ -30,8 +32,7 @@ app.get('/', (c) =>
 
 serve({
     fetch: app.fetch,
-    port: 3000,
-    hostname: '127.0.0.1'
-}, (info) => {
-    console.log(`Server is running on http://localhost:${info.port}`)
+    port,
 })
+
+console.log(`Server running on port ${port}`)
