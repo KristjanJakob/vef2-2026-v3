@@ -21,15 +21,6 @@ app.get('/', (c) =>
 app.route('/authors', authors)
 app.route('/news', news)
 
-serve({ fetch: app.fetch, port: 3000 })
-
-app.get('/', (c) =>
-    c.json({
-      '/authors': ['GET (paged)', 'GET /:id', 'POST', 'PUT /:id', 'DELETE /:id'],
-      '/news': ['GET (paged)', 'GET /:slug', 'POST', 'PUT /:slug', 'DELETE /:slug'],
-    }),
-)
-
 serve({
     fetch: app.fetch,
     port,
