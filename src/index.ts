@@ -4,11 +4,13 @@ import { serve } from '@hono/node-server'
 import { prettyJSON } from 'hono/pretty-json'
 import { authors } from './api/authors.api.js'
 import { news } from './routes/news.js'
+import { cors } from 'hono/cors'
 
 const app = new Hono()
 
 const port = Number(process.env.PORT) || 3000
 
+app.use('*', cors())
 app.use(prettyJSON())
 
 app.get('/', (c) =>
