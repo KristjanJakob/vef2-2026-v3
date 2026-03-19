@@ -12,7 +12,9 @@ news.get('/', async (c) => {
 
   const [data, total] = await Promise.all([
     prisma.news.findMany({
-      orderBy: { published: 'desc' },
+      orderBy:
+      [{ published: 'desc' },
+      { createdAt: 'desc'}],
       take: paging.limit,
       skip: paging.offset,
       include: { Author: true },
